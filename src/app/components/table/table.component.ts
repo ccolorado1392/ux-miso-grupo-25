@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface DataTable {
+  Id: number;
   Estudiante: string;
   Archivo: string;
   Plazo: string;
   Estado: string;
 }
 
-const ELEMENT_DATA: DataTable[] = [
-  {Estudiante: 'Jose', Archivo: 'Justificacion.pdf', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Estudiante: 'Maria', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Estudiante: 'Francisco', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Estudiante: 'Jose', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Estudiante: 'German', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
+let ELEMENT_DATA: DataTable[] = [
+  {Id: 1, Estudiante: 'Jose', Archivo: 'Justificacion.pdf', Plazo: '03/03/2024', Estado: 'En espera'},
+  {Id: 2, Estudiante: 'Maria', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
+  {Id: 3, Estudiante: 'Francisco', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
+  {Id: 4, Estudiante: 'Jose', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
+  {Id: 5, Estudiante: 'German', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
 ];
 
 @Component({
@@ -22,7 +24,11 @@ const ELEMENT_DATA: DataTable[] = [
 })
 export class TableComponent {
   displayedColumns: string[] = ['Estudiante', 'Archivo', 'Plazo', 'Estado', 'Acciones'];
-  dataSource = ELEMENT_DATA;
+  dataSource: MatTableDataSource<DataTable>;
+
+  constructor(){
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  }
 
   // Método para cambiar el estado a "Aprobada" cuando se hace clic en el botón de check
   cambiarAprobado(element: DataTable) {
@@ -32,8 +38,12 @@ export class TableComponent {
     element.Estado = 'Negada';
   }
   cambiarEliminado(element: DataTable) {
-    element.Estado = 'Eliminada';
-  }
-  
+    debugger;
+    const index = this.dataSource.data.findIndex(x => x.Id === element.Id);
+    if(index != -1){
+      this.dataSource.data.splice(index, 1);
+      this.dataSource.data = this.dataSource.data;
+    }
+  }  
 }
 
