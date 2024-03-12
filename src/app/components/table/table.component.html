@@ -1,0 +1,44 @@
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Estudiante">
+
+        <th mat-header-cell *matHeaderCellDef class="tableTitle"> Estudiante </th>
+        <td mat-cell *matCellDef="let element"> {{element.Estudiante}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Archivo">
+        <th mat-header-cell *matHeaderCellDef> Archivo </th>
+        <td mat-cell *matCellDef="let element"> {{element.Archivo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Plazo">
+        <th mat-header-cell *matHeaderCellDef class="tableTitle"> Plazo </th>
+        <td mat-cell *matCellDef="let element"> {{element.Plazo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Estado">
+        <th mat-header-cell *matHeaderCellDef class="tableTitle"> Estado </th>
+        <td mat-cell *matCellDef="let element" [ngClass]="{'aprobada': element.Estado === 'Aprobada','negada': element.Estado === 'Negada'}"> {{element.Estado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef class="tableTitle"> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="cambiarAprobado(element)">
+                <mat-icon>check</mat-icon>
+            </button>
+            <button mat-icon-button (click)="cambiarNegado(element)">
+                <mat-icon>close</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>settings</mat-icon>
+            </button>
+            <button mat-icon-button (click)="cambiarEliminado(element)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'eliminada': row.Estado === 'Eliminada'}"></tr>
+</table>
