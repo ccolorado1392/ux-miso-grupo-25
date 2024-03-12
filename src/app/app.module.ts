@@ -27,9 +27,6 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import {MatDialog} from '@angular/material/dialog';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,8 +56,7 @@ import {MatDialog} from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatDialogModule,
-    MatDialog,
+    MatDialogModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
