@@ -1,5 +1,5 @@
 .photo {
-    background-image: url('../../assets/images/Fondo.jpg');
+    background-image: url('../../../assets/images/Fondo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -70,3 +70,32 @@ a
     justify-content: space-between;
 }
 
+table {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .aprobada {
+    background-color: #7fff7f;
+    /* verde claro */
+  }
+  
+  .negada {
+    background-color: #ff7f7f;
+    /* verde claro */
+  }
+  
+  .eliminada {
+    background-color: #ff4e4e;
+    /* verde claro */
+  }
+  
+  .mdc-data-table__header-cell {
+    text-align: center;
+  }
+  
+  .mdc-data-table__cell
+  {
+    text-align: center;
+  }
+  
