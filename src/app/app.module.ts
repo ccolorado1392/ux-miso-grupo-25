@@ -16,7 +16,6 @@ import { CreateComponent } from './components/create/create.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { PopupConfigureinasistenciaComponent } from './components/popup-configureinasistencia/popup-configureinasistencia.component';
 import { PopupAddinasistenciaComponent } from './components/popup-addinasistencia/popup-addinasistencia.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 //Angular material//
 import { MatTableModule } from '@angular/material/table';
@@ -31,7 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 //Modulos//
 import { HomeComponent } from './modules/home/home.component';
@@ -51,7 +50,6 @@ import { CreateAccountComponent } from './modules/create-account/create-account.
     LoginInputComponent,
     CreateComponent,
     RecoverPasswordComponent,
-    DatepickerComponent,
     HomeComponent,
     LoginComponent,
     RememberComponent,
@@ -76,7 +74,8 @@ import { CreateAccountComponent } from './modules/create-account/create-account.
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatDialogModule    
+    MatDialogModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

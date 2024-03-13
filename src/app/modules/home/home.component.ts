@@ -15,11 +15,11 @@ export interface DataTable {
 }
 
 let ELEMENT_DATA: DataTable[] = [
-  {Id: 1, Estudiante: 'Jose', Archivo: 'Justificacion.pdf', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Id: 2, Estudiante: 'Maria', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Id: 3, Estudiante: 'Francisco', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Id: 4, Estudiante: 'Jose', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
-  {Id: 5, Estudiante: 'German', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera'},
+  { Id: 1, Estudiante: 'Jose', Archivo: 'Justificacion.pdf', Plazo: '03/03/2024', Estado: 'En espera' },
+  { Id: 2, Estudiante: 'Maria', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
+  { Id: 3, Estudiante: 'Francisco', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
+  { Id: 4, Estudiante: 'Jose', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
+  { Id: 5, Estudiante: 'German', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
 ];
 
 
@@ -30,15 +30,33 @@ let ELEMENT_DATA: DataTable[] = [
 })
 
 export class HomeComponent {
-  constructor(public dialog: MatDialog) { 
+  constructor(public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
   }
 
   openInasistencias() {
     const dialogRef = this.dialog.open(PopupAddinasistenciaComponent);
-    
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result && result.data) {
+        // Generar un nuevo ID para el nuevo elemento
+        const newId = this.dataSource.data.length + 1;
+
+        // Crear un nuevo objeto DataTable con los datos proporcionados
+        const newData: DataTable = {
+          Id: newId,
+          Estudiante: result.data.Estudiante,
+          Archivo: result.data.Archivo,
+          Plazo: result.data.Plazo,
+          Estado: result.data.Estado
+        };
+
+        // Agregar el nuevo elemento a ELEMENT_DATA
+        ELEMENT_DATA.push(newData);
+
+        // Actualizar la fuente de datos de la tabla
+        this.dataSource.data = ELEMENT_DATA;
+      }
     });
   }
 
@@ -55,11 +73,11 @@ export class HomeComponent {
   cambiarEliminado(element: DataTable) {
     debugger;
     const index = this.dataSource.data.findIndex(x => x.Id === element.Id);
-    if(index != -1){
+    if (index != -1) {
       this.dataSource.data.splice(index, 1);
       this.dataSource.data = this.dataSource.data;
     }
-  }  
+  }
   openAprobar() {
     this.dialog.open(PopupConfirmComponent,
       {
@@ -77,7 +95,7 @@ export class HomeComponent {
           descripcion: 'Ya fue informado el estudiante'
         }
       });
-  }  
+  }
   openDelete() {
     this.dialog.open(PopupConfirmComponent,
       {
@@ -86,14 +104,11 @@ export class HomeComponent {
           descripcion: ''
         }
       });
-  }   
+  }
   openConfigurar() {
     this.dialog.open(PopupConfigureinasistenciaComponent,
       {
-        data: {
-          titulo: 'Borraste la inasistencia',
-          descripcion: ''
-        }
+
       });
-  }  
+  }
 }
