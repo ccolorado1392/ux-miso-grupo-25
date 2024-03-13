@@ -37,6 +37,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
 import { RememberComponent } from './modules/remember/remember.component';
 import { CreateAccountComponent } from './modules/create-account/create-account.component';
+import { PopupConfirmDeleteComponent } from './components/popup-confirm-delete/popup-confirm-delete.component';
 
 
 
@@ -56,6 +57,7 @@ import { CreateAccountComponent } from './modules/create-account/create-account.
     CreateAccountComponent,
     PopupAddinasistenciaComponent,
     PopupConfigureinasistenciaComponent,
+    PopupConfirmDeleteComponent,
   ],
   imports: [
     BrowserModule,

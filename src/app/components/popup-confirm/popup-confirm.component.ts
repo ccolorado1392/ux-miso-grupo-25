@@ -10,10 +10,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogModule} from '@angular/material/di
   imports: [MatButtonModule, MatDialogModule],
 })
 export class PopupConfirmComponent {
-  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any)
-  {
-    
+  {    
   }
 
   ngOnInit()

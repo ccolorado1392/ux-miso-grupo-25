@@ -4,6 +4,7 @@ import { PopupAddinasistenciaComponent } from 'src/app/components/popup-addinasi
 import { MatTableDataSource } from '@angular/material/table';
 import { PopupConfirmComponent } from 'src/app/components/popup-confirm/popup-confirm.component';
 import { PopupConfigureinasistenciaComponent } from 'src/app/components/popup-configureinasistencia/popup-configureinasistencia.component';
+import { PopupConfirmDeleteComponent } from 'src/app/components/popup-confirm-delete/popup-confirm-delete.component';
 
 
 export interface DataTable {
@@ -63,10 +64,10 @@ export class HomeComponent {
     const dialogRef = this.dialog.open(PopupConfigureinasistenciaComponent, {
       data: { fechaInasistencia: element.Plazo }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.data) {
-          
+
         const index = this.dataSource.data.findIndex(x => x.Id === element.Id);
         if (index !== -1) {
           this.dataSource.data[index].Plazo = result.data.Plazo;
@@ -77,7 +78,21 @@ export class HomeComponent {
     });
   }
 
+  openDelete(element: DataTable) {
+    const dialogRef = this.dialog.open(PopupConfirmDeleteComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Confirmación de eliminación, realizar la eliminación
+        const index = this.dataSource.data.findIndex(x => x.Id === element.Id);
+        if (index !== -1) {
+          this.dataSource.data.splice(index, 1);
+          // Actualizar la fuente de datos
+          this.dataSource.data = [...this.dataSource.data];
+        }
+      }
+    });
+  }
   displayedColumns: string[] = ['Estudiante', 'Archivo', 'Plazo', 'Estado', 'Acciones'];
   dataSource: MatTableDataSource<DataTable>;
 
@@ -114,13 +129,5 @@ export class HomeComponent {
         }
       });
   }
-  openDelete() {
-    this.dialog.open(PopupConfirmComponent,
-      {
-        data: {
-          titulo: 'Borraste la inasistencia',
-          descripcion: ''
-        }
-      });
-  }
+
 }
