@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-popup-confirm',
@@ -10,13 +10,11 @@ import { MatDialog, MatDialogModule} from '@angular/material/dialog';
   imports: [MatButtonModule, MatDialogModule],
 })
 export class PopupConfirmComponent {
-  constructor(public dialog: MatDialog) {}
+  @Inject(MAT_DIALOG_DATA) public data: any
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(PopupConfirmComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+  ngOnInit()
+  {
+    debugger
+    console.log(JSON.stringify(this.data))
   }
 }

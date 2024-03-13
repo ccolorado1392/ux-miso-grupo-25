@@ -4,14 +4,19 @@
     <button mat-icon-button [matMenuTriggerFor]="perfil">
         <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #perfil="matMenu">
-        <mat-icon>person</mat-icon>
-        <label>
-            Hello Cesar!
-        </label>
-        <button mat-button>
-            <mat-icon>exit_to_app</mat-icon>
-        </button>
 
+
+    <mat-menu #perfil="matMenu">
+        <div class="container">
+            <mat-icon class="perfil">person</mat-icon>
+            <label>
+                Hello Cesar!
+            </label>
+            <button mat-button routerLink="/Login">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </div>
     </mat-menu>
+
+
 </mat-toolbar>

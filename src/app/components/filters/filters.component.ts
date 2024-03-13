@@ -12,9 +12,5 @@ interface Food {
 })
 
 export class FiltersComponent {
-  foods: Food[] = [
-    {viewValue: 'Steak'},
-    {viewValue: 'Pizza'},
-    {viewValue: 'Tacos'},
-  ];
+
 }

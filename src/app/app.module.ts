@@ -9,7 +9,6 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LoginInputComponent } from './components/login-input/login-input.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { PopupConfirmComponent } from './components/popup-confirm/popup-confirm.component';
 import { CreateComponent } from './components/create/create.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
@@ -27,6 +26,12 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { HomeComponent } from './modules/home/home.component';
+import { LoginComponent } from './modules/login/login.component';
+import { RememberComponent } from './modules/remember/remember.component';
+import { CreateAccountComponent } from './modules/create-account/create-account.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     CreateComponent,
     RecoverPasswordComponent,
     DatepickerComponent,
+    HomeComponent,
+    LoginComponent,
+    RememberComponent,
+    CreateAccountComponent,
   ],
   imports: [
     BrowserModule,
