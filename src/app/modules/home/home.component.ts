@@ -10,18 +10,17 @@ export interface DataTable {
   Id: number;
   Estudiante: string;
   Archivo: string;
-  Plazo: string;
+  Plazo: Date;
   Estado: string;
 }
 
 let ELEMENT_DATA: DataTable[] = [
-  { Id: 1, Estudiante: 'Jose', Archivo: 'Justificacion.pdf', Plazo: '03/03/2024', Estado: 'En espera' },
-  { Id: 2, Estudiante: 'Maria', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
-  { Id: 3, Estudiante: 'Francisco', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
-  { Id: 4, Estudiante: 'Jose', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
-  { Id: 5, Estudiante: 'German', Archivo: '-', Plazo: '03/03/2024', Estado: 'En espera' },
+  { Id: 1, Estudiante: 'Jose', Archivo: 'Justificacion.pdf', Plazo: new Date('2024-03-03'), Estado: 'En espera' },
+  { Id: 2, Estudiante: 'Maria', Archivo: '-', Plazo: new Date('2024-03-03'), Estado: 'En espera' },
+  { Id: 3, Estudiante: 'Francisco', Archivo: '-', Plazo: new Date('2024-03-03'), Estado: 'En espera' },
+  { Id: 4, Estudiante: 'Jose', Archivo: '-', Plazo: new Date('2024-03-03'), Estado: 'En espera' },
+  { Id: 5, Estudiante: 'German', Archivo: '-', Plazo: new Date('2024-03-03'), Estado: 'En espera' },
 ];
-
 
 @Component({
   selector: 'app-home',
@@ -59,6 +58,25 @@ export class HomeComponent {
       }
     });
   }
+
+  openConfigurar(element: DataTable) {
+    const dialogRef = this.dialog.open(PopupConfigureinasistenciaComponent, {
+      data: { fechaInasistencia: element.Plazo }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.data) {
+          
+        const index = this.dataSource.data.findIndex(x => x.Id === element.Id);
+        if (index !== -1) {
+          this.dataSource.data[index].Plazo = result.data.Plazo;
+
+          this.dataSource.data = [...this.dataSource.data];
+        }
+      }
+    });
+  }
+
 
   displayedColumns: string[] = ['Estudiante', 'Archivo', 'Plazo', 'Estado', 'Acciones'];
   dataSource: MatTableDataSource<DataTable>;
@@ -103,12 +121,6 @@ export class HomeComponent {
           titulo: 'Borraste la inasistencia',
           descripcion: ''
         }
-      });
-  }
-  openConfigurar() {
-    this.dialog.open(PopupConfigureinasistenciaComponent,
-      {
-
       });
   }
 }
