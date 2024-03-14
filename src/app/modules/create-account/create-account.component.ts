@@ -20,4 +20,9 @@ export class CreateAccountComponent {
         }
       });
   }
+
+  submitForm(signupForm: any) {
+    console.log('Formulario enviado');
+    console.log(signupForm.value);
+  }
 }

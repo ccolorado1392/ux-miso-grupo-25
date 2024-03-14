@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  
+  constructor() { }
+
+  submitForm(loginForm: any) {
+
+    console.log('Formulario enviado');
+    console.log(loginForm.value);
+  }
 }

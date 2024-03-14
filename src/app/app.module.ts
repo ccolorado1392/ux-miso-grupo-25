@@ -10,10 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { LoginInputComponent } from './components/login-input/login-input.component';
 import { PopupConfirmComponent } from './components/popup-confirm/popup-confirm.component';
-import { CreateComponent } from './components/create/create.component';
-import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { PopupConfigureinasistenciaComponent } from './components/popup-configureinasistencia/popup-configureinasistencia.component';
 import { PopupAddinasistenciaComponent } from './components/popup-addinasistencia/popup-addinasistencia.component';
 
@@ -48,9 +45,6 @@ import { PopupConfirmDeleteComponent } from './components/popup-confirm-delete/p
     PaginatorComponent,
     FiltersComponent,
     ToolbarComponent,
-    LoginInputComponent,
-    CreateComponent,
-    RecoverPasswordComponent,
     HomeComponent,
     LoginComponent,
     RememberComponent,

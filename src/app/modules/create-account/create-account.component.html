@@ -5,14 +5,50 @@
         <h1>
             Crear cuenta
         </h1>
-        <app-create></app-create>
-        <div class="buttons">
-            <button mat-button routerLink="/Login">
-                Volver
-            </button>
-            <button mat-button routerLink="/Login" (click)="openCreate()">
-                Siguiente
-            </button>
-        </div>
-    <div>
+        <form #signupForm="ngForm" (ngSubmit)="submitForm(signupForm)">
+            <mat-form-field class="login">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" name="nombre" ngModel required>
+                <mat-error *ngIf="signupForm.controls['nombre'].invalid && (signupForm.controls['nombre'].dirty || signupForm.controls['nombre'].touched)">
+                    El nombre es requerido.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="login">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ej. pat@example.com" name="email" ngModel required email>
+                <mat-error *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+                    El email no es válido.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="login">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" ngModel required minlength="8">
+                <mat-error *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+                    La contraseña es requerida y debe tener al menos 8 caracteres.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="login">
+                <mat-label>Confirmar Password</mat-label>
+                <input matInput type="password" name="confirmPassword" ngModel required>
+                <mat-error *ngIf="signupForm.controls['confirmPassword'].invalid && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)">
+                    Debes confirmar tu contraseña.
+                </mat-error>
+                <mat-error *ngIf="signupForm.controls['password'].value !== signupForm.controls['confirmPassword'].value">
+                    Las contraseñas no coinciden.
+                </mat-error>
+            </mat-form-field>
+
+            <div class="buttons">
+                <button mat-button routerLink="/Login">
+                    Volver
+                </button>
+                <button mat-button routerLink="/Login" [disabled]="signupForm.invalid" (click)="openCreate()">
+                    Siguiente
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

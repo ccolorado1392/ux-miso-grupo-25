@@ -6,7 +6,27 @@
         <h1>
             Iniciar sesion
         </h1>
-        <app-login-input></app-login-input>
+
+        <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm)">
+            <mat-form-field class="login" appearance="fill" floatLabel="always">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ej. pat@example.com" name="email" ngModel required email>
+                <mat-error *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+                    El email no es válido.
+                </mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="login" appearance="fill" floatLabel="always">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" ngModel required minlength="8">
+                <mat-error *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                    La contraseña es requerida y debe tener al menos 8 caracteres.
+                </mat-error>
+            </mat-form-field>
+        
+            
+        </form>
+
         <a href routerLink="/Remember">
             ¿Olvidaste tu contraseña?
         </a>
@@ -14,8 +34,9 @@
             <button mat-button class="Crear" routerLink="/Create">
                 Crear cuenta
             </button>
-            <button mat-button class="Siguiente" routerLink="/Home">
-                Siguiente
+
+            <button mat-button type="submit" [disabled]="loginForm.invalid" class="Siguiente" routerLink="/Home">
+                Iniciar Sesión
             </button>
         </div>
     </div>    

@@ -9,14 +9,24 @@
         <h3 class="sub-title">
             Ingresa tu correo de recuperacion
         </h3>
-        <app-recover-password></app-recover-password>
-        <div class="buttons">
-            <button mat-button routerLink="/Login">
-                Volver
-            </button>
-            <button mat-button routerLink="/Login" (click)="openRecuperada()">
-                Siguiente
-            </button>
-        </div>
-    <div>
+        
+        <form #forgotPasswordForm="ngForm" (ngSubmit)="submitForm(forgotPasswordForm)">
+            <mat-form-field class="login">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ej. pat@example.com" name="email" ngModel required email>
+                <mat-error *ngIf="forgotPasswordForm.controls['email'].invalid && (forgotPasswordForm.controls['email'].dirty || forgotPasswordForm.controls['email'].touched)">
+                    El email no es válido.
+                </mat-error>
+            </mat-form-field>
+            
+            <div class="buttons">
+                <button mat-button routerLink="/Login">
+                    Volver
+                </button>
+                <button mat-button routerLink="/Login" [disabled]="forgotPasswordForm.invalid" (click)="openRecuperada()" >
+                    Siguiente
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

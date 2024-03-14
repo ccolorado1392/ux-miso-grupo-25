@@ -21,4 +21,9 @@ export class RememberComponent {
         }
       });
   }
+
+  submitForm(forgotPasswordForm: any) {
+    console.log('Formulario enviado');
+    console.log(forgotPasswordForm.value);
+  }
 }

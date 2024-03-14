@@ -39,10 +39,8 @@ export class HomeComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.data) {
-        // Generar un nuevo ID para el nuevo elemento
         const newId = this.dataSource.data.length + 1;
 
-        // Crear un nuevo objeto DataTable con los datos proporcionados
         const newData: DataTable = {
           Id: newId,
           Estudiante: result.data.Estudiante,
@@ -51,10 +49,8 @@ export class HomeComponent {
           Estado: result.data.Estado
         };
 
-        // Agregar el nuevo elemento a ELEMENT_DATA
         ELEMENT_DATA.push(newData);
 
-        // Actualizar la fuente de datos de la tabla
         this.dataSource.data = ELEMENT_DATA;
       }
     });
@@ -83,11 +79,11 @@ export class HomeComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Confirmación de eliminación, realizar la eliminación
+
         const index = this.dataSource.data.findIndex(x => x.Id === element.Id);
         if (index !== -1) {
           this.dataSource.data.splice(index, 1);
-          // Actualizar la fuente de datos
+
           this.dataSource.data = [...this.dataSource.data];
         }
       }
@@ -96,7 +92,6 @@ export class HomeComponent {
   displayedColumns: string[] = ['Estudiante', 'Archivo', 'Plazo', 'Estado', 'Acciones'];
   dataSource: MatTableDataSource<DataTable>;
 
-  // Método para cambiar el estado a "Aprobada" cuando se hace clic en el botón de check
   cambiarAprobado(element: DataTable) {
     element.Estado = 'Aprobada';
   }
