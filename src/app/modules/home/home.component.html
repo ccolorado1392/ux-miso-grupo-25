@@ -5,10 +5,13 @@
     <div class="page">
         <div class="container">
             <div class="title">
-                <h1>INASISTENCIAS</h1>
+                <div class="Inasistenciatitle">
+                    <h1>INASISTENCIAS</h1>
+                </div>
+                
                 <div class="options">
                     <app-filters></app-filters>
-                    <button mat-button (click)="openInasistencias()">Añadir Inasistencia</button>
+                    <button mat-button style="background-color: #045CFC; color: white;" (click)="openInasistencias()">Añadir Inasistencia</button>
                 </div>
             </div>
 
@@ -47,7 +50,7 @@
                         Acciones 
                     </th>
                     <td mat-cell *matCellDef="let element">
-                        <button mat-icon-button (click)="cambiarAprobado(element);openAprobar()">
+                        <button mat-icon-button  (click)="cambiarAprobado(element);openAprobar()">
                             <mat-icon>check</mat-icon>
                         </button>
                         <button mat-icon-button (click)="cambiarNegado(element);openNegar()">

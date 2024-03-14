@@ -17,9 +17,9 @@
                 </mat-error>
             </mat-form-field>
         
-            <mat-form-field class="login" appearance="fill" floatLabel="always">
+            <mat-form-field class="login" appearance="fill" floatLabel="always" >
                 <mat-label>Password</mat-label>
-                <input matInput type="password" name="password" ngModel required minlength="8">
+                <input matInput type="password" name="password" ngModel required minlength="8" >
                 <mat-error *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
                     La contraseña es requerida y debe tener al menos 8 caracteres.
                 </mat-error>
@@ -32,11 +32,11 @@
             ¿Olvidaste tu contraseña?
         </a>
         <div class="buttons">
-            <button mat-button class="Crear" routerLink="/Create">
+            <button mat-button class="Crear" routerLink="/Create" style=" color: #045CFC;">
                 Crear cuenta
             </button>
 
-            <button mat-button type="submit" [disabled]="loginForm.invalid" class="Siguiente" routerLink="/Home">
+            <button mat-button type="submit" style="background-color: #045CFC; color: white;" [disabled]="loginForm.invalid" class="Siguiente" routerLink="/Home">
                 Iniciar Sesión
             </button>
         </div>

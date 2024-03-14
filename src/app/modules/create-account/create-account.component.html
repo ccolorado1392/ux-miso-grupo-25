@@ -43,10 +43,10 @@
             </mat-form-field>
 
             <div class="buttons">
-                <button mat-button routerLink="/Login">
+                <button mat-button routerLink="/Login" style=" color: #045CFC;">
                     Volver
                 </button>
-                <button mat-button routerLink="/Login" [disabled]="signupForm.invalid" (click)="openCreate()">
+                <button mat-button routerLink="/Login" style="background-color: #045CFC; color: white;" [disabled]="signupForm.invalid" (click)="openCreate()">
                     Siguiente
                 </button>
             </div>
